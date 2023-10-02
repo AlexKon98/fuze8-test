@@ -1,5 +1,6 @@
 <template>
   <div class="app">
+    <Header />
     <main>
       <section class="joke__info">
         <div class="container" v-if="!fetching">
@@ -23,12 +24,19 @@
         </div>
       </section>
     </main>
+    <Footer />
   </div>
 </template>
 
 <script>
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue'
+
 export default {
   name: 'JokePage',
+  components: {
+    Header, Footer
+  },
   data() {
     return {
       joke: {},
