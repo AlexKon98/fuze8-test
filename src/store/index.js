@@ -35,7 +35,7 @@ export default createStore({
     async fetchJokeInfo({commit}, id) {
       try {
         const req = await axios.get(API_BASE_URL + '/' + id);
-        if (req.status === 200 && req.data.value) {
+        if (req.status === 200 && req.data) {
           return req.data;
         } else {
           return { error: "Seems like joke doesn't exist!", }

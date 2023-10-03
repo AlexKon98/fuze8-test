@@ -3,7 +3,7 @@
     <Header />
     <main>
       <section class="joke__info">
-        <div class="container" v-if="!fetching">
+        <div class="container" v-if="!fetching && joke">
           <router-link class="joke-link" to="/">
             <img class="joke__img" src="@/assets/chuck.png" :alt="joke.value">
           </router-link>
@@ -19,8 +19,12 @@
             <a :href="joke.url">this site</a>
           </div>
         </div>
-        <div class="joke__loading" v-else>
+        <div class="joke__loading" v-if="fetching">
           Loading...
+        </div>
+        <div class="joke__loading error" v-else>
+          <div>Seems like joke does not exist</div>
+          <router-link to="/">go to home page</router-link>
         </div>
       </section>
     </main>
@@ -61,13 +65,20 @@ export default {
   position: fixed;
   left: 0;
   right: 0;
-  top: 0;
-  bottom: 0;
+  top: 80px;
+  bottom: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 48px;
   line-height: 52px;
+  &.error {
+    display: flex;
+    flex-direction: column;
+  }
+  a {
+    color: #656EC2;
+  }
 }
 
 .container {

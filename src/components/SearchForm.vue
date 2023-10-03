@@ -32,7 +32,9 @@ export default {
   },
   watch: {
     input(val) {
+      if (val.trim().length > 3) this.fetching = true;
       if (val.trim() === '') this.$store.commit('setJokes', []);
+      this.fetching = false;
     }
   },
   methods: {
