@@ -19,7 +19,7 @@
             <a :href="joke.url">this site</a>
           </div>
         </div>
-        <div class="joke__loading" v-if="fetching">
+        <div class="joke__loading" v-else-if="fetching">
           Loading...
         </div>
         <div class="joke__loading error" v-else>
